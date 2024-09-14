@@ -67,3 +67,48 @@ The `TreeWidget` class is responsible for displaying the traversal results of a 
    Install with:
    ```bash
    sudo apt-get install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+
+
+### 2. Standard C++ Libraries:
+- **iostream**: For basic input/output operations.
+- **vector**: To store the children of each node.
+- **sstream**: To build the string representation of the tree traversals.
+- **string**: For handling and manipulating strings
+
+
+## Explanation of All Functions and Classes
+
+### Tree<T> Class
+This templated class is the core data structure that manages a tree. It uses a dynamic node-based approach, where each node can have multiple children. The class provides the ability to add nodes and traverse the tree in various ways.
+
+#### Important Methods:
+- **add_root(const T& value)**: This method adds a root node with the specified value. If the root already exists, it replaces the value.
+- **add_sub_node(const T& parent_val, const T& child_val)**: Adds a child node to the parent node specified by `parent_val`. If the parent node is not found, it throws an exception.
+
+#### Tree Traversal Iterators:
+- **Pre-order Traversal**: Traverses the tree in the order: root → left → right.
+- **Post-order Traversal**: Traverses the tree in the order: left → right → root.
+- **In-order Traversal**: Only valid for binary trees, traverses the tree in the order: left → root → right.
+- **BFS Traversal**: Visits nodes level by level, starting from the root.
+- **DFS Traversal**: Traverses the tree depth-first, starting from the root.
+
+### Node<T> Class
+This class is used internally by the `Tree` class to represent individual nodes. Each node stores a value of type `T` and maintains a list of child nodes.
+
+### Complex Class
+The `Complex` class is a simple representation of a complex number. It supports basic operations such as printing and comparison. The class also ensures that floating-point precision is handled appropriately when comparing two complex numbers.
+
+### TreeWidget Class (GUI)
+This class is responsible for creating a GUI window using Qt to display the results of the tree traversals. The constructor of `TreeWidget` accepts a `Tree` and uses Qt's layout and widget system to display the results in a text label.
+
+#### Methods:
+- **TreeWidget(Tree<T>& tree, const QString& title)**: This templated constructor generates the text for all traversals and displays it in a `QLabel` inside a `QVBoxLayout`. The title of the window is set based on the type of tree.
+
+## How to Compile and Run
+
+### Compiling:
+Use the provided Makefile to compile the program. It handles all necessary dependencies, including linking to Qt libraries.
+
+```bash
+make
+
